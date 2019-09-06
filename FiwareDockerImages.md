@@ -50,6 +50,16 @@ This one is a nightmare. The RPI3 B+ haven't enough memory in order to complete 
 
 The build process of this image is not optimized but it works !
 
+On another computer installed with Ubuntu 18.04.3 LTS
+
+```
+$ cd cygnus-arm64/build
+$ docker build -t cygnus-build .
+$ docker run -it --rm -v $PWD:/opt/build:Z cygnus-build
+```
+
+Then copy the ```build``` folder in the ```cygnus-arm64``` folder on the RPI3 using ```scp``` for example
+
 ```
 $ cd cygnus-arm64
 $ docker build -t cygnus-arm64 .
