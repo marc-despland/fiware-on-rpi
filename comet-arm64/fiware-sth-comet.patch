@@ -1,0 +1,12 @@
+diff -Naur fiware-sth-comet/Dockerfile fiware-sth-comet-new/Dockerfile
+--- fiware-sth-comet/Dockerfile	2019-09-06 11:31:43.465030925 +0000
++++ fiware-sth-comet-new/Dockerfile	2019-09-05 09:39:39.853342410 +0000
+@@ -20,7 +20,7 @@
+ # please contact with: [german.torodelvalle@telefonica.com]
+ 
+ ARG NODE_VERSION=8.16.1-slim
+-FROM node:${NODE_VERSION}
++FROM node
+ 
+ MAINTAINER FIWARE STH Team. Telefónica I+D
+ 
