@@ -6,3 +6,4 @@
 
 1. [Hardware and OS configuration](./HardwareandOS.md)
 2. [FIWARE Docker images](./FiwareDockerImages.md)
+3. [Start the components](.FiwareComponents.md)

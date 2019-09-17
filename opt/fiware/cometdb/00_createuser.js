@@ -1,0 +1,3 @@
+use sth_default
+db.createUser({ user: 'comet', pwd: 'comet', roles: [ { role: "userAdmin", db: "sth_default" }, { role: "readWrite", db: "sth_default" },{ role: "dbAdmin", db: "sth_default" } ] });
+db.updateUser("comet", { roles: [ { role: "userAdminAnyDatabase", db: "admin" }, { role: "readWriteAnyDatabase", db: "admin" },{ role: "dbAdminAnyDatabase", db: "admin" },{ role: "userAdmin", db: "sth_default" }, { role: "readWrite", db: "sth_default" },{ role: "dbAdmin", db: "sth_default" } ,{ role: "userAdmin", db: "sth_testservice" }, { role: "readWrite", db: "sth_testservice" },{ role: "dbAdmin", db: "sth_testservice" }] });

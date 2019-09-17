@@ -23,8 +23,8 @@ Then we created several Logical Volumes for our needs
 # lvcreate -L 1G -n swap vgdata
 # lvcreate -L 20G -n docker vgdata
 # lvcreate -L 10G -n projects vgdata
-# lvcreate -L 1G -n oriondb vgdata
-# lvcreate -L 1G -n cometdb vgdata
+# lvcreate -L 10G -n oriondb vgdata
+# lvcreate -L 10G -n cometdb vgdata
 ```
 
 Preparing the filesystems

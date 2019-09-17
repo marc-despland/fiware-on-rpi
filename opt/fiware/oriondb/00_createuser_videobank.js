@@ -1,0 +1,1 @@
+db.createUser({ user: 'mongo', pwd: 'mongo', roles: [ { role: 'userAdminAnyDatabase', db: 'videobank'}, { role: 'readWriteAnyDatabase', db: 'videobank'}, {role: 'dbAdminAnyDatabase', db: 'videobank'} ] } );

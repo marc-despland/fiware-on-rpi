@@ -4,6 +4,13 @@ Standard FIWARE images are not build for ARM64 architecture, so we can't use the
 
 We have to create our own images for ARM64 
 
+We assume the work directory is the folder where you clone this repository.
+
+```
+git clone https://github.com/marc-despland/fiware-on-rpi.git
+cd fiware-on-rpi
+```
+
 ## Creation of a base images
 
 First step is to create the base image to use, based on our Ubunutu bionic version.

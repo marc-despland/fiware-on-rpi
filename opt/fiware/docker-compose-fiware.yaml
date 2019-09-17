@@ -1,0 +1,79 @@
+version: "3"
+services:
+  oriondb:
+    image: mongo
+    command: --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo 
+      - MONGO_INITDB_ROOT_PASSWORD=mongo 
+      - MONGO_INITDB_DATABASE=admin
+    volumes:
+       - /var/data/oriondb:/data/db
+       - /opt/fiware/oriondb:/docker-entrypoint-initdb.d
+    deploy:
+      replicas: 1
+    networks:
+      - databases
+  orion:
+    image: orion-arm64
+    environment:
+      - DB_HOST=oriondb 
+      - DB=orion 
+      - DB_USER=orion 
+      - DB_PASSWORD=orion
+    deploy:
+      replicas: 1
+    ports:
+      - "1026:1026"
+    networks:
+      - databases
+      - orion
+      - cygnus
+  cometdb:
+    image: mongo
+    command: --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+      - MONGO_INITDB_DATABASE=admin
+    volumes:
+       - /var/data/cometdb:/data/db
+       - /opt/fiware/cometdb:/docker-entrypoint-initdb.d
+    deploy:
+      replicas: 1
+    networks:
+      - databases
+  cygnus:
+    image: cygnus-arm64
+    environment:
+      - CYGNUS_MONGO_HOSTS=cometdb:27017
+      - CYGNUS_MONGO_USER=comet
+      - CYGNUS_MONGO_PASS=comet
+    deploy:
+      replicas: 1
+    networks:
+      - databases
+      - cygnus
+  comet:
+    image: comet-arm64
+    environment:
+      - STH_HOST=0.0.0.0
+      - STH_PORT=8080
+      - DB_USERNAME=comet
+      - DB_PASSWORD=comet
+      - DB_URI=cometdb:27017
+      - DEFAULT_SERVICE=default
+      - DEFAULT_SERVICEPATH=/
+    deploy:
+      replicas: 1
+    ports:
+            - "8080:8080"
+    networks:
+      - databases
+      - comet
+networks:
+  databases:
+  orion:
+  comet:
+  cygnus:
+
